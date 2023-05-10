@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mern-social
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mern-social
+  template:
+    metadata:
+      labels:
+        app: mern-social
+    spec:
+      containers:
+        - name: mern-social
+          image: shivanshsethi2000/mern-social:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000

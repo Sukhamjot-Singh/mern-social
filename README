@@ -1,0 +1,8 @@
+# sudo minikube delete
+# sudo minikube start --force
+# sudo kubectl apply -f deployment.yml
+# sudo kubectl apply -f service.yml
+# sudo kubectl get all
+# sudo kubectl port-forward service/mern-social 80
+#oMQpd7kM59IKFnie
+#elastic
