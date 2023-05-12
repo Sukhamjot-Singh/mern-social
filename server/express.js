@@ -10,6 +10,9 @@ import userRoutes from './routes/user.routes'
 import authRoutes from './routes/auth.routes'
 import postRoutes from './routes/post.routes'
 
+var morgan = require('morgan')
+var fs = require('fs')
+
 // modules for server side rendering
 import React from 'react'
 import ReactDOMServer from 'react-dom/server'
@@ -25,6 +28,11 @@ import devBundle from './devBundle'
 
 const CURRENT_WORKING_DIR = process.cwd()
 const app = express()
+
+app.use(morgan(':date[iso] :method :url :status', {
+  stream: fs.createWriteStream(path.join('./', 'access.log'), { flags: 'a' }), immediate: true 
+}))
+
 
 //comment out before building for production
 devBundle.compile(app)
@@ -78,5 +86,6 @@ app.use((err, req, res, next) => {
     console.log(err)
   }
 })
+
 
 export default app

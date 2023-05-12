@@ -16,7 +16,7 @@ const isActive = (history, path) => {
 }
 const Menu = withRouter(({history}) => (
   <AppBar position="static">
-    <Toolbar>
+    <Toolbar style={{ justifyContent: 'center', alignItems: 'center' }}>
       <Typography variant="h6" color="inherit">
         MERN Social
       </Typography>
