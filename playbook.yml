@@ -3,7 +3,7 @@
   user: root
   tasks:
   - name: removing previous minikube containers
-    command: sudo minikube remove
+    command: sudo minikube delete
   - name: Starting minikube
     command: sudo minikube start --cpus 4 --memory 8192 --force
   - name: Deploy the application
