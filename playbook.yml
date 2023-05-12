@@ -2,6 +2,10 @@
   become: true
   user: root
   tasks:
+  - name: Pull image
+      docker_image:
+        name: shivanshsethi2000/mern-social:latest
+        source: pull
   - name: removing previous minikube containers
     command: sudo minikube delete
   - name: Starting minikube
