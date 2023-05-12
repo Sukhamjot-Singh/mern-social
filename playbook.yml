@@ -1,6 +1,10 @@
 - hosts: localhost
   become: yes
   tasks:
+  - name: Install pip requests library
+      pip:
+        name: requests
+        state: present
   - name: Deploy the service
     k8s:
       state: present
