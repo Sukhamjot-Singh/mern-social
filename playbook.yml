@@ -1,19 +1,15 @@
 - hosts: localhost
-  become: yes
+  become: true
+  user: root
   tasks:
-  - name: Install pip requests library
-      pip:
-        name: requests
-        state: present
-  - name: Deploy the service
-    k8s:
-      state: present
-      definition: "{{ lookup('template', 'service.yml') | from_yaml }}"
-      validate_certs: no
-      namespace: default
+  - name: Starting minikube
+    command: sudo minikube start --cpus 4 --memory 8192 --force
   - name: Deploy the application
-    k8s:
-      state: present
-      validate_certs: no
-      namespace: default
-      definition: "{{ lookup('template', 'deployment.yml') | from_yaml }}"
+    command: sudo kubectl apply -f deployment.yml
+  - name: Deploy the service
+    command: sudo kubectl apply -f service.yml
+  - name: Waiting for pod to run
+    ansible.builtin.pause:
+      minutes: 2
+  - name: Wesite Deploying on localhost:80
+    command: sudo kubectl port-forward service/mern-social 80
