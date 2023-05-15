@@ -22,3 +22,5 @@
 2023-05-12T19:19:46.156Z GET /api/users/defaultphoto -
 2023-05-12T19:19:46.209Z GET /api/posts/feed/645e50c80f1e270e54095fe3 -
 2023-05-12T19:19:46.212Z GET /api/users/findpeople/645e50c80f1e270e54095fe3 -
+echo {"hello": "world"}
+echo {"hi": "everyone"}

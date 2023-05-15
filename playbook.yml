@@ -17,5 +17,5 @@
   - name: Waiting for pod to run
     ansible.builtin.pause:
       minutes: 2
-  - name: Wesite Deploying on localhost:80
+  - name: Website Deploying on localhost:80
     command: sudo kubectl port-forward service/mern-social 80
