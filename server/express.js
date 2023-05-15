@@ -39,7 +39,7 @@ const jsonFormat = (tokens, req, res) => {
 };
 
 app.use(morgan(jsonFormat, {
-  stream: fs.createWriteStream(path.join('/Users/shivanshsethi/Desktop/mern-social/', 'access.json'), { flags: 'a' }), immediate: true 
+  stream: fs.createWriteStream(path.join('./', 'access.json'), { flags: 'a' }), immediate: true 
 }))
 
 
