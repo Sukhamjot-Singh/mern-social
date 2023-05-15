@@ -1,6 +1,6 @@
 import express from 'express'
 import path from 'path'
-import bodyParser from 'body-parser'
+import bodyParser, { json } from 'body-parser'
 import cookieParser from 'cookie-parser'
 import compress from 'compression'
 import cors from 'cors'
@@ -29,8 +29,17 @@ import devBundle from './devBundle'
 const CURRENT_WORKING_DIR = process.cwd()
 const app = express()
 
-app.use(morgan(':date[iso] :method :url :status', {
-  stream: fs.createWriteStream(path.join('./', 'access.log'), { flags: 'a' }), immediate: true 
+const jsonFormat = (tokens, req, res) => {
+  return JSON.stringify({
+    method: tokens.method(req, res),
+    url: tokens.url(req, res),
+    status: tokens.status(req, res),
+    timestamp: tokens.date(req, res, 'iso'),
+  });
+};
+
+app.use(morgan(jsonFormat, {
+  stream: fs.createWriteStream(path.join('/Users/shivanshsethi/Desktop/mern-social/', 'access.json'), { flags: 'a' }), immediate: true 
 }))
 
 
